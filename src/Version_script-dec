@@ -1,0 +1,21 @@
+{
+  global: 
+    AllocCedarDecoder;
+    FreeCedarDecoder;
+    MemGetPhyAddr;
+    MemPalloc;
+    MemPfree;
+    MemFlushCache;
+    IVBV;
+    IFBM;
+    IOS;
+    IVE;
+    cedarv_f23_ic_version;
+    av_heap_init;
+    av_heap_release;
+    av_heap_alloc;
+    av_heap_free;
+    av_heap_physic_addr;
+  local: 
+    *; 
+};

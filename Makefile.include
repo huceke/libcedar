@@ -1,0 +1,26 @@
+BUILDROOT	:= /media/usbdisk/xbmc/xbmc-alwinner/buildroot-allwinner
+SDKSTAGE	:= $(BUILDROOT)/output/staging
+TARGETFS	:= $(BUILDROOT)/output/target
+TOOLCHAIN	:= $(BUILDROOT)/output/host/usr/
+HOST			:= arm-linux-gnueabihf
+SYSROOT		:= $(BUILDROOT)/output/host/usr/arm-unknown-linux-gnueabi/sysroot
+
+JOBS=7
+
+CFLAGS			:= -isystem$(SYSROOT)/include
+CXXFLAGS		:= $(CFLAGS)
+CPPFLAGS		:= $(CFLAGS)
+LDFLAGS			:= -L$(BUILDROOT)/lib
+LD					:= $(TOOLCHAIN)/bin/$(HOST)-ld --sysroot=$(SYSROOT)
+CC					:= $(TOOLCHAIN)/bin/$(HOST)-gcc --sysroot=$(SYSROOT)
+CXX         := $(TOOLCHAIN)/bin/$(HOST)-g++ --sysroot=$(SYSROOT)
+OBJDUMP			:= $(TOOLCHAIN)/bin/$(HOST)-objdump
+RANLIB			:= $(TOOLCHAIN)/bin/$(HOST)-ranlib
+STRIP				:= $(TOOLCHAIN)/bin/$(HOST)-strip
+AR 					:= $(TOOLCHAIN)/bin/$(HOST)-ar
+CXXCP 			:= $(CXX) -E
+PATH 				:= $(PREFIX)/bin:$(BUILDROOT)/output/host/usr/bin:$(PATH)
+
+CFLAGS			+= -fPIC -pipe -mcpu=cortex-a8 -mtune=cortex-a8 -mfpu=neon -mfloat-abi=hard -O3 -fomit-frame-pointer -mabi=aapcs-linux -Wno-psabi -mno-apcs-stack-check -mstructure-size-boundary=32 -mno-sched-prolog -DCEDAR_LIBRARY -DHAVE_LIBCEDAR -DOS_LINUX
+LDFLAGS			+= -L$(SDKSTAGE)/lib -L$(SDKSTAGE)/usr/lib 
+INCLUDES		+= -isystem$(SDKSTAGE)/staging/usr/include 
