@@ -93,7 +93,10 @@ vpicture_t* CCedarFrameBufferManager::FbmGetDisplayFrameStatic(Handle h)
 {
   CCedarFrameBufferManager *manager = (CCedarFrameBufferManager *)h;
 
-  return manager->FbmGetDisplayFrame();
+  if(manager)
+    return manager->FbmGetDisplayFrame();
+  else
+    return NULL;
 }
 
 void CCedarFrameBufferManager::SetFbmPictureState(vpicture_t *picture, enum PictureState pictureState)
@@ -199,7 +202,10 @@ vpicture_t* CCedarFrameBufferManager::FbmRequestFrameStatic(Handle h)
 {
   CCedarFrameBufferManager *manager = (CCedarFrameBufferManager *)h;
 
-  return manager->FbmRequestFrame(h);
+  if(manager)
+    return manager->FbmRequestFrame(h);
+  else
+    return NULL;
 }
 
 void CCedarFrameBufferManager::FbmReturnDisplayFrame(vpicture_t* picture, Handle h)
@@ -288,7 +294,8 @@ void CCedarFrameBufferManager::FbmReturnFrameStatic(vpicture_t* picture, u8 vali
 {
   CCedarFrameBufferManager *manager = (CCedarFrameBufferManager *)h;
 
-  manager->FbmReturnFrame(picture, valid, h);
+  if(manager)
+    manager->FbmReturnFrame(picture, valid, h);
 }
 
 void CCedarFrameBufferManager::FbmShareFrame(vpicture_t* picture, Handle h)

@@ -147,7 +147,11 @@ vstream_data_t *CCedarBitstreamBufferManager::VbvRequestBitstreamFrame()
 vstream_data_t *CCedarBitstreamBufferManager::VbvRequestBitstreamFrameStatic(Handle vbv)
 {
   CCedarBitstreamBufferManager *manager = (CCedarBitstreamBufferManager *)vbv;
-  return manager->VbvRequestBitstreamFrame();
+
+  if(manager)
+    return manager->VbvRequestBitstreamFrame();
+  else
+    return NULL;
 }
 
 void CCedarBitstreamBufferManager::VbVReturnBitstreamFrame(vstream_data_t* stream)
@@ -162,7 +166,9 @@ void CCedarBitstreamBufferManager::VbVReturnBitstreamFrame(vstream_data_t* strea
 void CCedarBitstreamBufferManager::VbVReturnBitstreamFrameStatic(vstream_data_t* stream, Handle vbv)
 {
   CCedarBitstreamBufferManager *manager = (CCedarBitstreamBufferManager *)vbv;
-  manager->VbVReturnBitstreamFrame(stream);
+
+  if(manager)
+    manager->VbVReturnBitstreamFrame(stream);
 }
 
 void CCedarBitstreamBufferManager::VbvFlushBitstreamFrame(vstream_data_t* stream)
@@ -178,7 +184,9 @@ void CCedarBitstreamBufferManager::VbvFlushBitstreamFrame(vstream_data_t* stream
 void CCedarBitstreamBufferManager::VbvFlushBitstreamFrameStatic(vstream_data_t* stream, Handle vbv)
 {
   CCedarBitstreamBufferManager *manager = (CCedarBitstreamBufferManager *)vbv;
-  manager->VbvFlushBitstreamFrame(stream);
+
+  if(manager)
+    manager->VbvFlushBitstreamFrame(stream);
 }
 
 u8* CCedarBitstreamBufferManager::VbvGetBaseAddr()
@@ -189,7 +197,11 @@ u8* CCedarBitstreamBufferManager::VbvGetBaseAddr()
 u8* CCedarBitstreamBufferManager::VbvGetBaseAddrStatic(Handle vbv)
 {
   CCedarBitstreamBufferManager *manager = (CCedarBitstreamBufferManager *)vbv;
-  return manager->VbvGetBaseAddr();
+
+  if(manager)
+    return manager->VbvGetBaseAddr();
+  else
+    return NULL;
 }
 
 u32 CCedarBitstreamBufferManager::VbvGetSize()
@@ -200,7 +212,11 @@ u32 CCedarBitstreamBufferManager::VbvGetSize()
 u32 CCedarBitstreamBufferManager::VbvGetSizeStatic(Handle vbv)
 {
   CCedarBitstreamBufferManager *manager = (CCedarBitstreamBufferManager *)vbv;
-  return manager->VbvGetSize();
+
+  if(manager)
+    return manager->VbvGetSize();
+  else
+    return 0;
 }
 
 void CCedarBitstreamBufferManager::VbvAddBuffer(vstream_data_t *streamData)
