@@ -98,6 +98,7 @@ public:
   virtual ~CCedarDecoder();
   virtual bool Open(vstream_info_t *streamInfo, uint8_t *extradata, unsigned int extrasize);
   virtual void Close();
+  virtual void Reset();
   virtual void Flush();
   virtual void Lock();
   virtual void UnLock();

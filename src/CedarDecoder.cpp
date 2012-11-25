@@ -307,6 +307,13 @@ vresult_e CCedarDecoder::Decode(bool drop, uint64_t pts)
   return res;
 }
 
+void CCedarDecoder::Reset()
+{
+  Lock();
+  DllLibVeCore.libve_reset(0, m_decoderHandle);
+  UnLock();
+}
+
 void CCedarDecoder::Flush()
 {
   Lock();
